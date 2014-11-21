@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Language:</strong>
+  <%= @snippet.language %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @snippet.title %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @snippet.body %>
+</p>
+
+<p>
+  <strong>Num favorites:</strong>
+  <%= @snippet.num_favorites %>
+</p>
+
+<p>
+  <strong>Num views:</strong>
+  <%= @snippet.num_views %>
+</p>
+
+<p>
+  <strong>Num comments:</strong>
+  <%= @snippet.num_comments %>
+</p>
+
+<%= link_to 'Edit', edit_snippet_path(@snippet) %> |
+<%= link_to 'Back', snippets_path %>

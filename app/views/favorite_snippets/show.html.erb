@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @favorite_snippet.user %>
+</p>
+
+<p>
+  <strong>Snippet:</strong>
+  <%= @favorite_snippet.snippet %>
+</p>
+
+<%= link_to 'Edit', edit_favorite_snippet_path(@favorite_snippet) %> |
+<%= link_to 'Back', favorite_snippets_path %>
