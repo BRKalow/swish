@@ -33,3 +33,5 @@ gem 'bootstrap-sass-extras'
 gem 'autoprefixer-rails'
 gem 'bootswatch-rails'
 
+gem 'rails-erd',     group: :development
+
