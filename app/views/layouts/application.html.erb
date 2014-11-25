@@ -54,9 +54,9 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav">
-            <li><%= link_to "Link1", '#' %></li>
-            <li><%= link_to "Link2", '#' %></li>
-            <li><%= link_to "Link3", '#' %></li>
+            <%= nav_link "Snippets", snippets_path %>
+            <%= nav_link "Players", users_path %>
+            <%= nav_link "Teams", teams_path %>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <%= render 'devise/menu/login_logout' %>
