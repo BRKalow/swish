@@ -12,5 +12,5 @@ Rails.application.routes.draw do
   end
   resources :users
 
-  root to: 'users#index'
+  root to: 'home#index'
 end
