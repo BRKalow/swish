@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def determine_layout
-    if devise_controller? && resource_name == :user && action_name == "new"
+    if devise_controller? && resource_name == :user && ["new", "create"].include?(action_name)
       "login"
     else
       "application"
