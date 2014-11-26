@@ -1,3 +1,27 @@
 <%= render @snippets %>
 
 <%= link_to 'New Snippet', new_snippet_path %>
+<div id="editor" style="width:100%;height:500px;">
+class RegistrationsController < Devise::RegistrationsController
+  private
+
+  def sign_up_params
+    params.require(:user).permit(
+      :username,
+      :email,
+      :password,
+      :password_confirmation
+    )
+  end
+
+  def account_update_params
+    params.require(:user).permit(
+      :username,
+      :email,
+      :password,
+      :password_confirmation,
+      :current_password
+    )
+  end
+end
+</div>
