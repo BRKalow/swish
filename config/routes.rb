@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
+  get 'snippets/mine', to: 'snippets#mine'
+
   resources :tags
-
   devise_for :users, :controllers => { registrations: 'registrations' }
-
   resources :favorite_snippets
   resources :teams
   resources :collections
@@ -10,7 +10,9 @@ Rails.application.routes.draw do
   resources :snippets do
     put :favorite, on: :member
   end
-  resources :users
+  resources :users do
+    resources :snippets, only: [:index]
+  end
 
   root to: 'home#index'
 end
