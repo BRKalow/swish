@@ -3,6 +3,8 @@ class SnippetsController < ApplicationController
 
   respond_to :html
 
+  layout "snippets"
+
   def index
     @snippets = Snippet.all
     @snippet = Snippet.new
@@ -35,6 +37,15 @@ class SnippetsController < ApplicationController
   def destroy
     @snippet.destroy
     respond_with(@snippet)
+  end
+
+  def mine
+    unless user_signed_in?
+      flash[:error] = "You need to be logged in to see your snippets."
+      redirect_to snippets_path
+    else
+      @snippets = current_user.snippets
+    end
   end
 
   private

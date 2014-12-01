@@ -1,4 +1,1 @@
-<%= render @snippets %>
-
-<%= link_to 'New Snippet', new_snippet_path %>
-<%= render :partial => "snippets/form" %>
+<%= render(@snippets) || "No snippets found" %>

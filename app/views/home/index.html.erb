@@ -1,1 +1,14 @@
-<%= render :partial => "snippets/form" %>
+<% if user_signed_in? %>
+    <%= render :partial => "snippets/form" %>
+<% else %>
+    <div class="bs-component">
+        <div class="jumbotron">
+            <h1>Welcome to Swish</h1>
+            <p>Swish is an easy and social way to organize and share your code snippets in the cloud.</p>
+            <p>
+                <%= link_to 'Register', new_user_registration_path, class: 'btn btn-primary btn-lg' %>
+                or <%= link_to 'Login', new_user_session_path %>
+            </p>
+        </div>
+    </div>
+<% end %>
