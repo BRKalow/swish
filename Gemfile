@@ -33,6 +33,7 @@ gem 'bootstrap-sass-extras'
 gem 'autoprefixer-rails'
 gem 'bootswatch-rails'
 gem 'ace-rails-ap'
+gem 'twitter-typeahead-rails'
 
 gem 'rails-erd',     group: :development
 

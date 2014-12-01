@@ -5,6 +5,7 @@ class SnippetsController < ApplicationController
 
   def index
     @snippets = Snippet.all
+    @snippet = Snippet.new
     respond_with(@snippets)
   end
 
