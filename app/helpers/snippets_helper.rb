@@ -12,7 +12,8 @@ module SnippetsHelper
   end
 
   def highlight(text, language)
-    lexer_string = "Rouge::Lexers::#{language.capitalize}"
+    capital_languages = ['HTML', 'CSS', 'PHP', 'SQL', 'XML', 'YAML', 'ERB', 'C']
+    lexer_string = capital_languages.include?(language) ? "Rouge::Lexers::#{language}" : "Rouge::Lexers::#{language.capitalize}"
     lexer = lexer_string.constantize
     formatter = Rouge::Formatters::HTML.new(css_class: 'highlight', line_numbers: true)
     formatter.format(lexer.lex(text)).html_safe
