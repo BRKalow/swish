@@ -1,5 +1,13 @@
 <% if user_signed_in? %>
+<h1>
+    Welcome back to Swish
+    <a class="small pull-right" data-toggle="collapse" data-target="#snippet_form" aria-expanded="true" aria-controls="snippet_form">
+        Quick Snippet Form <span class="caret"></span>
+    </a>
+</h1>
+<div id="snippet_form" class="collapse">
     <%= render :partial => "snippets/form" %>
+</div>
 <% else %>
     <div class="bs-component">
         <div class="jumbotron">
@@ -12,3 +20,7 @@
         </div>
     </div>
 <% end %>
+<hr>
+<div class="row">
+  <%= render @snippets %>
+</div>

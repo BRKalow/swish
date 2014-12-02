@@ -17,12 +17,17 @@
 @import "bootstrap-sprockets";
 @import "bootswatch/flatly/variables";
 @import "bootstrap";
-body { padding-top: 100px; }
+body { padding-top: 100px; padding-bottom: 20px; }
+a:hover { background: none; }
+.dropdown-toggle { cursor: pointer; }
 .btn-primary { color:white!important; }
-.nav-user { padding: 9px 0px 9px 0px; max-width: 100px; float: left; }
-.nav-avatar { margin-right: 5px; float: left; }
+.nav-user { padding: 9px 0px 9px 0px; float: left; }
+.nav-user-text { float: left; }
+.nav-avatar { margin-right: 5px; float: left; width: 40px; }
 .nav-avatar-image { height: 40px; width: 40px; display: inline-block; border-radius: 3px; }
-.nav-username { font-size: 16px; line-height: 24px; float: left; display: block; color: white; font-weight: 900;}
-.nav-logout { line-height: 16px; float: left; display: inline; color: white; }
+.nav-username { font-size: 16px; display: block; color: white; font-weight: 900;}
+.nav-logout { line-height: 16px; color: white; }
 a.nav-logout:visited { color: white; }
+pre { border-radius: 0px; border: none; }
+.content { margin-top: 20px; }
 @import "bootswatch/flatly/bootswatch";
