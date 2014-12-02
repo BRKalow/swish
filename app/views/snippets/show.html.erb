@@ -15,7 +15,7 @@
       <li><%= glyph "time" %> <%= @snippet.created_at.to_formatted_s(:month_day_year) %></li>
       <li><%= glyph "eye-open" %> <%= pluralize @snippet.num_views, "view" %></li>
       <li><%= glyph "heart" %> <%= pluralize @snippet.num_favorites, "favorite" %></li>
-      <li><a href="#comments"><%= glyph "comment" %> <%= pluralize @snippet.num_comments, "comment" %t s></a></li>
+      <li><a href="#comments"><%= glyph "comment" %> <%= pluralize @snippet.num_comments, "comment" %></a></li>
       <% if current_user == @snippet.user %>
       <li class="pull-right">
         <div class="dropdown pull-right">
