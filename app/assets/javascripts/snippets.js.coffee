@@ -18,6 +18,7 @@ languages.initialize()
 
 editor = ace.edit("editor")
 editor.setTheme("ace/theme/twilight")
+editor.getSession().setTabSize(2);
 editor.getSession().setMode("ace/mode/ruby")
 
 editor.getSession().on('change', ->

@@ -5,6 +5,8 @@
         <%= user_snippets_link %>
         <%= user_favorites_link %>
     </ul>
-    <%= yield %>
+    <div class="content">
+      <%= yield %>
+    </div>
 <% end %>
 <%= render template: "layouts/application" %>
