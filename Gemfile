@@ -34,6 +34,7 @@ gem 'autoprefixer-rails'
 gem 'bootswatch-rails'
 gem 'ace-rails-ap'
 gem 'twitter-typeahead-rails'
+gem 'rouge'
 
 gem 'rails-erd',     group: :development
 

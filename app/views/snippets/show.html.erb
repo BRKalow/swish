@@ -1,5 +1,35 @@
-<p id="notice"><%= notice %></p>
+<style>
+<%= Rouge::Theme.find('github').render(scope: '.highlight') %>
+rder: solid 1px #ddd;
+  background: #fff;
+    padding: 0;
+      line-height: 23px;
+        margin-bottom: 30px;
+          white-space: pre;
+            overflow-x: auto;
+              word-break: inherit;
+                word-wrap: inherit;
+                }
 
+                .highlight td {
+                      padding: 8px 15px;
+                }
+
+                .gl { 
+                    background: #fafafa;
+                      border-right: 1px solid #ddd;
+                        color: #999;
+                          
+                          /* Stop line numbers being visually selected */
+                          -webkit-touch-callout: none;
+                            -webkit-user-select: none;
+                              -khtml-user-select: none;
+                                -moz-user-select: none;
+                                  -ms-user-select: none;
+                                    user-select: none;
+                }
+e
+</style>
 <p>
   <strong>Language:</strong>
   <%= @snippet.language %>
@@ -12,7 +42,7 @@
 
 <p>
   <strong>Body:</strong>
-  <%= @snippet.body %>
+  <%= highlight @snippet.body, @snippet.language %>
 </p>
 
 <p>

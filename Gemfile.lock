@@ -100,6 +100,7 @@ GEM
       json (~> 1.4)
     responders (1.1.2)
       railties (>= 3.2, < 4.2)
+    rouge (1.7.4)
     ruby-graphviz (1.0.9)
     sass (3.2.19)
     sass-rails (4.0.4)
@@ -151,6 +152,7 @@ DEPENDENCIES
   pg
   rails (= 4.1.6)
   rails-erd
+  rouge
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
   spring
