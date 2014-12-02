@@ -11,4 +11,16 @@ class User < ActiveRecord::Base
 
   validates_presence_of :username
   validates_uniqueness_of :email, :username
+
+  before_create :permalink_name
+
+  def to_param
+    self.permalink
+  end
+
+  private
+
+  def permalink_name
+    self.permalink = self.username.parameterize
+  end
 end
