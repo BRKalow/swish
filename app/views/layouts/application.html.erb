@@ -53,13 +53,14 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav">
-            <%= nav_link "Snippets", snippets_path %>
-            <%= nav_link "Players", users_path %>
-            <%= nav_link "Teams", teams_path %>
+            <%= nav_link_top "Snippets", snippets_path, "snippets" %>
+            <%= nav_link_top "Players", users_path, "users" %>
+            <%= nav_link_top "Teams", teams_path, "teams" %>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <%= render 'devise/menu/login_logout' %>
           </ul>
+          <%= render 'devise/menu/user_link' %>
         </div><!-- /.navbar-collapse -->
       </div>
     </nav>
