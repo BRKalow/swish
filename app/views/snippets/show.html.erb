@@ -13,9 +13,9 @@
     <h2><%= @snippet.title %><small>.<%= @snippet.language.downcase %></small></h2>
     <ul class="list-inline snippet-info">
       <li><%= glyph "time" %> <%= @snippet.created_at.to_formatted_s(:month_day_year) %></li>
-      <li><%= glyph "eye-open" %> <%= @snippet.num_views %> views</li>
-      <li><%= glyph "heart" %> <%= @snippet.num_favorites %> fans</li>
-      <li><a href="#comments"><%= glyph "comment" %> <%= @snippet.num_comments %> comments</a></li>
+      <li><%= glyph "eye-open" %> <%= pluralize @snippet.num_views, "view" %></li>
+      <li><%= glyph "heart" %> <%= pluralize @snippet.num_favorites, "favorite" %></li>
+      <li><a href="#comments"><%= glyph "comment" %> <%= pluralize @snippet.num_comments, "comment" %t s></a></li>
       <% if current_user == @snippet.user %>
       <li class="pull-right">
         <div class="dropdown pull-right">
