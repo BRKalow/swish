@@ -37,10 +37,15 @@
 <p class="snippet-body">
   <%= highlight @snippet.body, @snippet.language %>
 </p>
-<h4><%= pluralize(@snippet.num_comments, "Comment") %><a href="#comment_form" class="pull-right small" data-toggle="collapse" data-target="#comment_form" aria-expanded="true" aria-controls="comment_form">Post a Comment <span class="caret"></span></a></h4>
+<h4>
+  <%= pluralize(@snippet.num_comments, "Comment") %>
+  <% if user_signed_in? %><a href="#comment_form" class="pull-right small" data-toggle="collapse" data-target="#comment_form" aria-expanded="true" aria-controls="comment_form">Post a Comment <span class="caret"></span></a><% end %>
+</h4>
 <hr>
-<div id="comment_form" class="collapse">
-    <%= render :partial => "comments/form" %>
-</div>
+<% if user_signed_in? %>
+  <div id="comment_form" class="collapse">
+      <%= render :partial => "comments/form" %>
+  </div>
+<% end %>
 <a id="comments">
 <%= render @snippet.comments %>
