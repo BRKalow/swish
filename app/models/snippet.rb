@@ -6,4 +6,12 @@ class Snippet < ActiveRecord::Base
   has_and_belongs_to_many :collections
   has_many :taggings
   has_many :tags, through: :taggings
+
+  has_default_values(
+    num_favorites: 0,
+    num_comments: 0,
+    num_views: 0
+  )
+
+  default_scope { order(created_at: :desc) }
 end
