@@ -23,7 +23,8 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     @comment.save
-    respond_with(@comment)
+    flash[:success] = "Comment posted."
+    redirect_to snippet_path(@comment.snippet)
   end
 
   def update

@@ -1,64 +1,46 @@
 <style>
 <%= Rouge::Theme.find('github').render(scope: '.highlight') %>
-rder: solid 1px #ddd;
-  background: #fff;
-    padding: 0;
-      line-height: 23px;
-        margin-bottom: 30px;
-          white-space: pre;
-            overflow-x: auto;
-              word-break: inherit;
-                word-wrap: inherit;
-                }
-
-                .highlight td {
-                      padding: 8px 15px;
-                }
-
-                .gl { 
-                    background: #fafafa;
-                      border-right: 1px solid #ddd;
-                        color: #999;
-                          
-                          /* Stop line numbers being visually selected */
-                          -webkit-touch-callout: none;
-                            -webkit-user-select: none;
-                              -khtml-user-select: none;
-                                -moz-user-select: none;
-                                  -ms-user-select: none;
-                                    user-select: none;
-                }
-e
+.highlight { background: white; border: 1px solid lightgrey; overflow-x: scroll; }
+.highlight table td { padding: 0px; }
+.code pre { background: none; }
 </style>
-<p>
-  <strong>Language:</strong>
-  <%= @snippet.language %>
-</p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @snippet.title %>
-</p>
-
-<p>
-  <strong>Body:</strong>
+<div class="row">
+  <div class="col-lg-1 col-sm-2">
+    <%= link_to image_tag(avatar_url(@snippet.user, 80), :class => "snippet-avatar", :size => 80), user_path(@snippet.user) %>
+  </div>
+  <div class="col-lg-11 col-sm-10">
+    <h2><%= @snippet.title %><small>.<%= @snippet.language.downcase %></small></h2>
+    <ul class="list-inline snippet-info">
+      <li><%= glyph "time" %> <%= @snippet.created_at.to_formatted_s(:month_day_year) %></li>
+      <li><%= glyph "eye-open" %> <%= @snippet.num_views %> views</li>
+      <li><%= glyph "heart" %> <%= @snippet.num_favorites %> fans</li>
+      <li><a href="#comments"><%= glyph "comment" %> <%= @snippet.num_comments %> comments</a></li>
+      <% if current_user == @snippet.user %>
+      <li class="pull-right">
+        <div class="dropdown pull-right">
+          <a class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+            <%= glyph "cog" %>
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+            <li role="presentation"><%= link_to glyph("pencil") + " Edit", edit_snippet_path(@snippet) %></li>
+            <li role="presentation"><%= link_to glyph("remove-sign") + " Delete (permanent)", snippet_path(@snippet), :method => :delete %></li>
+          </ul>
+        </div>
+      </li>
+      <% end %>
+      <% if user_signed_in? %><li class="pull-right"><%= favorite_link @snippet %></li><% end %>
+    </ul>
+  </div>
+</div>
+<p class="snippet-body">
   <%= highlight @snippet.body, @snippet.language %>
 </p>
-
-<p>
-  <strong>Num favorites:</strong>
-  <%= @snippet.num_favorites %>
-</p>
-
-<p>
-  <strong>Num views:</strong>
-  <%= @snippet.num_views %>
-</p>
-
-<p>
-  <strong>Num comments:</strong>
-  <%= @snippet.num_comments %>
-</p>
-
-<%= link_to 'Edit', edit_snippet_path(@snippet) %> |
-<%= link_to 'Back', snippets_path %>
+<h4><%= pluralize(@snippet.num_comments, "Comment") %><a href="#comment_form" class="pull-right small" data-toggle="collapse" data-target="#comment_form" aria-expanded="true" aria-controls="comment_form">Post a Comment <span class="caret"></span></a></h4>
+<hr>
+<div id="comment_form" class="collapse">
+    <%= render :partial => "comments/form" %>
+</div>
+<a id="comments">
+<%= render @snippet.comments %>

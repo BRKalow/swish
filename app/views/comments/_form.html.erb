@@ -1,4 +1,6 @@
 <%= form_for(@comment) do |f| %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.hidden_field :snippet_id, value: @snippet.id %>
   <% if @comment.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
@@ -11,19 +13,13 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.text_field :user_id %>
-  </div>
-  <div class="field">
-    <%= f.label :snippet_id %><br>
-    <%= f.text_field :snippet_id %>
-  </div>
-  <div class="field">
-    <%= f.label :body %><br>
-    <%= f.text_area :body %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="row">
+    <div class="form-group col-lg-6">
+      <%= f.label :body, class: "sr-only" %>
+      <%= f.text_area :body, class: "form-control col-lg-6", placeholder: "Comment Body" %>
+    </div>
+    <div class="actions">
+      <%= f.submit class: 'btn btn-primary' %>
+    </div>
   </div>
 <% end %>
