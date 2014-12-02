@@ -1,5 +1,6 @@
 class SnippetsController < ApplicationController
   before_action :set_snippet, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!, only: [:mine, :favorites, :new]
 
   respond_to :html
 
@@ -12,6 +13,9 @@ class SnippetsController < ApplicationController
   end
 
   def show
+    puts "----------"
+    puts @snippet.user
+    puts "----------"
     respond_with(@snippet)
   end
 
@@ -48,12 +52,16 @@ class SnippetsController < ApplicationController
     end
   end
 
+  def favorites
+    @snippets = current_user.favorites
+  end
+
   private
     def set_snippet
       @snippet = Snippet.find(params[:id])
     end
 
     def snippet_params
-      params.require(:snippet).permit(:language, :title, :body, :num_favorites, :num_views, :num_comments)
+      params.require(:snippet).permit(:language, :title, :body, :num_favorites, :num_views, :num_comments, :user_id)
     end
 end
