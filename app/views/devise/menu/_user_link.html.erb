@@ -1,11 +1,16 @@
 <% if user_signed_in? %>
   <div class="nav-user navbar-right">
-    <a href="<%= user_path(current_user) %>">
-      <div class="nav-avatar">
+    <div class="nav-avatar">
+      <a href="<%= user_path(current_user) %>">
         <img src="<%= avatar_url(current_user, 40) %>" class="nav-avatar-image" />
-      </div>
-      <span class="nav-username"><%= current_user.username %></span>
-    </a>
-    <%= link_to('Logout', destroy_user_session_path, :method => :delete, :class => 'nav-logout') %>
+      </a>
+    </div>
+    <div class="nav-user-text">
+      <a href="<%= user_path(current_user) %>">
+        <span class="nav-username"><%= current_user.username %></span>
+      </a>
+      <%= link_to('Logout', destroy_user_session_path, :method => :delete, :class => 'nav-logout') %>
+    </div>
+    <div class="clearfix"></div>
   </div>
 <% end %>

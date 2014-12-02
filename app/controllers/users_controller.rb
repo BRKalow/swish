@@ -5,10 +5,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
-    # unless @user == current_user
-    #   redirect_to :back, :alert => "Access denied."
-    # end
+    @user = User.find_by_permalink(params[:id])
   end
 
 end
