@@ -4,8 +4,7 @@ class Snippet < ActiveRecord::Base
   has_many :favorite_snippets
   has_many :favorited_by, through: :favorite_snippets, source: :user
   has_and_belongs_to_many :collections
-  has_many :taggings
-  has_many :tags, through: :taggings
+  acts_as_taggable
 
   has_default_values(
     num_favorites: 0,

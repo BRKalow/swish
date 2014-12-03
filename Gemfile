@@ -35,6 +35,9 @@ gem 'bootswatch-rails'
 gem 'ace-rails-ap'
 gem 'twitter-typeahead-rails'
 gem 'rouge'
+gem 'will_paginate', '~> 3.0.6'
+gem 'will_paginate-bootstrap'
+gem 'acts-as-taggable-on', '~> 3.4'
 
 gem 'rails-erd',     group: :development
 

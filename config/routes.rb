@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   get 'snippets/mine', to: 'snippets#mine'
   get 'snippets/favorites', to: 'snippets#favorites'
 
-  resources :tags
   devise_for :users, :controllers => { registrations: 'registrations' }
   resources :teams
   resources :collections
