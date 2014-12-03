@@ -8,7 +8,11 @@ class SnippetsController < ApplicationController
   layout "snippets"
 
   def index
-    @snippets = Snippet.all
+    if(params[:tag])
+      @snippets = Snippet.tagged_with(params[:tag]).paginate(:page => params[:page], :per_page => 10)
+    else
+      @snippets = Snippet.paginate(:page => params[:page], :per_page => 10)
+    end
     @snippet = Snippet.new
     respond_with(@snippets)
   end
@@ -64,12 +68,12 @@ class SnippetsController < ApplicationController
       flash[:error] = "You need to be logged in to see your snippets."
       redirect_to snippets_path
     else
-      @snippets = current_user.snippets
+      @snippets = current_user.snippets.paginate(:page => params[:page], :per_page => 10)
     end
   end
 
   def favorites
-    @snippets = current_user.favorites
+    @snippets = current_user.favorites.paginate(:page => params[:page], :per_page => 10)
   end
 
   private
@@ -84,6 +88,6 @@ class SnippetsController < ApplicationController
     end
 
     def snippet_params
-      params.require(:snippet).permit(:language, :title, :body, :num_favorites, :num_views, :num_comments, :user_id)
+      params.require(:snippet).permit(:language, :title, :body, :num_favorites, :num_views, :num_comments, :user_id, :tag_list)
     end
 end

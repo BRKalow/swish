@@ -9,6 +9,7 @@
       <li><%= glyph "eye-open" %> <%= pluralize @snippet.num_views, "view" %></li>
       <li><%= glyph "heart" %> <%= pluralize @snippet.num_favorites, "favorite" %></li>
       <li><a href="#comments"><%= glyph "comment" %> <%= pluralize @snippet.num_comments, "comment" %></a></li>
+      <li><%= glyph "tags" %> <%= linkable_tags @snippet.tag_list %></li>
       <% if current_user == @snippet.user %>
       <li class="pull-right">
         <div class="dropdown pull-right">
@@ -41,4 +42,5 @@
   </div>
 <% end %>
 <a id="comments">
-<%= render @snippet.comments %>
+<%= render @snippet.comments.paginate(:page => params[:page], :per_page => 10) %>
+<%= will_paginate @snippet.comments.paginate(:page => params[:page], :per_page => 10), :page_links => false, renderer: BootstrapPagination::Rails %>

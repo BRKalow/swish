@@ -27,4 +27,12 @@ module SnippetsHelper
       link_to icon + text, favorite_snippet_path(snippet), method: :put
     end
   end
+
+  def linkable_tags(tag_list)
+    links = []
+    tag_list.each do |tag|
+      links << link_to(tag, snippets_path(:tag => tag))
+    end
+    links.join(', ').html_safe
+  end
 end

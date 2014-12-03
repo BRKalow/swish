@@ -1,1 +1,2 @@
 <%= render(@snippets) || "No snippets found" %>
+<%= will_paginate @snippets, :page_links => false, renderer: BootstrapPagination::Rails %>

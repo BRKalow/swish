@@ -1,1 +1,9 @@
+<h2>
+<% if params[:tag] %>
+Snippets Tagged With: <%= params[:tag] %>
+<% else %>
+Showing All Snippets
+<% end %>
+</h2>
 <%= render(@snippets) || "No snippets found" %>
+<%= will_paginate @snippets, :page_links => false, renderer: BootstrapPagination::Rails %>
