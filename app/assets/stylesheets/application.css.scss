@@ -19,6 +19,7 @@
 @import "bootstrap";
 body { padding-top: 100px; padding-bottom: 20px; }
 a:hover { background: none; }
+.alert a { color: white; font-weight: bold; }
 .dropdown-toggle { cursor: pointer; }
 .btn-primary { color:white!important; }
 .nav-user { padding: 9px 0px 9px 0px; float: left; }

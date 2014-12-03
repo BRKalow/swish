@@ -54,6 +54,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
+          <%= joinings_flash %>
           <%= bootstrap_flash %>
           <%= content_for?(:content) ? yield(:content) : yield %>
         </div>
@@ -63,6 +64,7 @@
       </footer>
 
     </div> <!-- /container -->
+  <%= include_gon :init => true %>
   <%= javascript_include_tag "application" %>
   </body>
 </html>

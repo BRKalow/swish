@@ -19,4 +19,13 @@ module ApplicationHelper
     gravatar_id = Digest::MD5.hexdigest(user.email.downcase)
     "http://gravatar.com/avatar/#{gravatar_id}.png?s=#{size}"
   end
+
+  def joinings_flash
+    if user_signed_in?
+      pending_joinings = current_user.joinings.where(status: Joining.statuses[:pending])
+      if pending_joinings.length > 0
+        render partial: 'joinings/pending', locals: { joining: pending_joinings.first }
+      end
+    end
+  end
 end

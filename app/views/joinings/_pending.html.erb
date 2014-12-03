@@ -1,0 +1,4 @@
+<%= flash_container(:info, "You have been invited to join the #{joining.team.name} team! " +
+                           link_to("Accept", accept_joining_path(joining.id), method: :patch) + " or "
+                           link_to("Reject", destroy_joining_path(joining.id), method: :delete) +
+                           " the invitation.") %>

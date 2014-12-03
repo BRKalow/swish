@@ -16,36 +16,37 @@ languages = new Bloodhound
 
 languages.initialize()
 
-editor = ace.edit("editor")
-editor.setTheme("ace/theme/twilight")
-editor.getSession().setTabSize(2);
-editor.getSession().setMode("ace/mode/ruby")
+if $('#editor').length
+  editor = ace.edit("editor")
+  editor.setTheme("ace/theme/twilight")
+  editor.getSession().setTabSize(2);
+  editor.getSession().setMode("ace/mode/ruby")
 
-editor.getSession().on('change', ->
-  $('#snippet_body').val(editor.getSession().getValue())
-)
+  editor.getSession().on('change', ->
+    $('#snippet_body').val(editor.getSession().getValue())
+  )
 
-$('#snippet_language').typeahead(
-  hint: true
-  highlight: true,
-  minLength: 1
-,
-  name: 'languages',
-  displayKey: 'value',
-  source: languages.ttAdapter()
-)
+  $('#snippet_language').typeahead(
+    hint: true
+    highlight: true,
+    minLength: 1
+  ,
+    name: 'languages',
+    displayKey: 'value',
+    source: languages.ttAdapter()
+  )
 
-$('#snippet_language').on('change', ->
-  editor.getSession().setMode("ace/mode/" + $('#snippet_language').val().toLowerCase())
-)
+  $('#snippet_language').on('change', ->
+    editor.getSession().setMode("ace/mode/" + $('#snippet_language').val().toLowerCase())
+  )
 
-$('#snippet_title').keypress((event) ->
-  if event.keyCode == 13
-    event.preventDefault()
-    return
-)
-$('#snippet_language').keypress((event) ->
-  if event.keyCode == 13
-    event.preventDefault()
-    return
-)
+  $('#snippet_title').keypress((event) ->
+    if event.keyCode == 13
+      event.preventDefault()
+      return
+  )
+  $('#snippet_language').keypress((event) ->
+    if event.keyCode == 13
+      event.preventDefault()
+      return
+  )

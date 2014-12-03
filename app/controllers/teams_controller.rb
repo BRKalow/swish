@@ -4,11 +4,13 @@ class TeamsController < ApplicationController
   respond_to :html
 
   def index
-    @teams = Team.all
+    @teams = Team.paginate(:page => params[:page], :per_page => 10)
     respond_with(@teams)
   end
 
   def show
+    @joining = Joining.new
+    gon.users = User.where.not(id: @team.members.map(&:id) + @team.pending.map(&:id))
     respond_with(@team)
   end
 
@@ -36,12 +38,37 @@ class TeamsController < ApplicationController
     respond_with(@team)
   end
 
+  def joining
+    user = User.find_by_username(joining_params[:user])
+
+    unless user
+      flash[:error] = "We couldn't find that player."
+      redirect_to :back
+    else
+      @joining = Joining.new
+      @joining.team_id = joining_params[:team_id]
+      @joining.user = User.find_by_username(joining_params[:user])
+
+      if @joining.save
+        flash[:success] = "An invite has been sent to that player."
+        redirect_to :back
+      else
+        flash[:error] = "It looks like something went wrong with your invite."
+        redirect_to :back
+      end
+    end
+  end
+
   private
     def set_team
-      @team = Team.find(params[:id])
+      @team = Team.find_by_permalink(params[:id])
     end
 
     def team_params
-      params.require(:team).permit(:name, :picture)
+      params.require(:team).permit(:name, :picture, :remote_picture_url, :picture_cache, :location, :website, :owner_id)
+    end
+
+    def joining_params
+      params.require(:joining).permit(:user, :team_id)
     end
 end
