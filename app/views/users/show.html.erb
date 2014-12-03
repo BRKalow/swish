@@ -13,10 +13,10 @@
   </div>
 </div>
 <div class="content">
-  <h3>Snippets</h3><hr>
-  <%= render @user.snippets %>
-  <h3>Comments</h3><hr>
-  <%= render @user.comments %>
-  <h3>Collections</h3><hr>
-  <%= render @user.collections %>
+  <h3>Latest Snippets</h3><hr>
+  <%= render @user.snippets.limit(5) %>
+  <h3>Latest Comments</h3><hr>
+  <%= render @user.comments.limit(5) %>
+  <h3>Latest Collections</h3><hr>
+  <%= render @user.collections.limit(5) %>
 </div>

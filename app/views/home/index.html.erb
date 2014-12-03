@@ -21,6 +21,5 @@
     </div>
 <% end %>
 <hr>
-<div class="row">
-  <%= render @snippets %>
-</div>
+<%= render @snippets %>
+<%= will_paginate @snippets, :page_links => false, renderer: BootstrapPagination::Rails %>
