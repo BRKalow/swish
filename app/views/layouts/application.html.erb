@@ -14,7 +14,12 @@
     <![endif]-->
     <link rel="apple-touch-icon" href="images/favicon.png"/>
     <%= stylesheet_link_tag "application", :media => "all" %>
-
+    <style>
+      <%= Rouge::Theme.find('github').render(scope: '.highlight') %>
+      .highlight { background: white; border: 1px solid lightgrey; overflow-x: scroll; }
+      .highlight table td { padding: 0px; }
+      .code pre { background: none; }
+    </style>
   </head>
   <body>
 
