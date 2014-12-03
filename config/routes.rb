@@ -1,9 +1,14 @@
 Rails.application.routes.draw do
+  patch 'joinings/accept/:id', to: 'joinings#accept', as: 'accept_joining'
+  delete 'joinings/:id', to: 'joinings#destroy', as: 'destroy_joining'
+
   get 'snippets/mine', to: 'snippets#mine'
   get 'snippets/favorites', to: 'snippets#favorites'
 
   devise_for :users, :controllers => { registrations: 'registrations' }
-  resources :teams
+  resources :teams do
+    put :joining, on: :member
+  end
   resources :collections
   resources :comments
   resources :snippets do

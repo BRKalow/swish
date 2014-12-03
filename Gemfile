@@ -38,6 +38,9 @@ gem 'rouge'
 gem 'will_paginate', '~> 3.0.6'
 gem 'will_paginate-bootstrap'
 gem 'acts-as-taggable-on', '~> 3.4'
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'gon'
 
 gem 'rails-erd',     group: :development
 
