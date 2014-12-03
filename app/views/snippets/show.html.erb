@@ -3,7 +3,12 @@
     <%= link_to image_tag(avatar_url(@snippet.user, 80), :class => "snippet-avatar", :size => 80), user_path(@snippet.user) %>
   </div>
   <div class="col-lg-11 col-sm-10">
-    <h2><%= @snippet.title %><small>.<%= @snippet.language.downcase %></small></h2>
+    <h2>
+      <% if @snippet.team %>
+        <%= link_to(image_tag(@snippet.team.picture_url(:small), :class => "", :size => 50), team_path(@snippet.team)) %>
+      <% end %>
+      <%= @snippet.title %><small>.<%= @snippet.language.downcase %></small>
+    </h2>
     <ul class="list-inline snippet-info">
       <li><%= glyph "time" %> <%= @snippet.created_at.to_formatted_s(:month_day_year) %></li>
       <li><%= glyph "eye-open" %> <%= pluralize @snippet.num_views, "view" %></li>

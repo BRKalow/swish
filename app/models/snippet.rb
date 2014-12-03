@@ -1,5 +1,6 @@
 class Snippet < ActiveRecord::Base
   belongs_to :user
+  belongs_to :team
   has_many :comments
   has_many :favorite_snippets
   has_many :favorited_by, through: :favorite_snippets, source: :user
@@ -13,4 +14,6 @@ class Snippet < ActiveRecord::Base
   )
 
   default_scope { order(created_at: :desc) }
+
+  validates_presence_of :title, :language, :body
 end

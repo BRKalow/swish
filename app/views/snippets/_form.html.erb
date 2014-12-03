@@ -33,7 +33,17 @@
         <div id="editor" style="width:100%;height:300px;"><%= @snippet.body %></div>
       </div>
       <div class="actions">
-        <%= f.submit class: 'btn btn-primary' %>
+        <div class="row">
+        <div class="form-group col-lg-4">
+          <%= f.collection_select :team_id, current_user.teams, :id, :name, { include_blank: 'Team' }, { class: 'form-control' } %>
+          <p class="help-block">
+            Use this if you would like to associate this snippet with one of your teams.
+          </p>
+        </div>
+        <div class="col-lg-8">
+          <%= f.submit class: 'btn btn-primary' %>
+        </div>
+        </div>
       </div>
     <% end %>
   </div>
