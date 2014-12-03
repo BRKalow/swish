@@ -1,27 +1,3 @@
-<h1>Listing teams</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Picture</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @teams.each do |team| %>
-      <tr>
-        <td><%= team.name %></td>
-        <td><%= team.picture %></td>
-        <td><%= link_to 'Show', team %></td>
-        <td><%= link_to 'Edit', edit_team_path(team) %></td>
-        <td><%= link_to 'Destroy', team, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Team', new_team_path %>
+<h2>Teams <small class="pull-right"><%= link_to "Create Team", new_team_path %></small></h2>
+<%= render @teams || "No teams...yet." %>
+<%= will_paginate @teams, :page_links => false, renderer: BootstrapPagination::Rails %>

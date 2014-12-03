@@ -1,0 +1,13 @@
+<div class="row">
+  <div class="col-sm-2 col-lg-1">
+    <%= link_to image_tag(team.picture_url(:medium), :class => "user-avatar", :size => 80), team_path(team) %>
+  </div>
+  <div class="col-sm-10 col-lg-11">
+    <h2 class="username"><%= link_to team.name, team_path(team) %></h2>
+    <ul class="list-inline user-info">
+      <% if !team.location.empty? %><li><%= glyph "map-marker" %> <%= team.location %></li><% end %>
+      <% if !team.website.empty? %><li><%= glyph "link" %> <%= team.website %></li><% end %>
+    </ul>
+  </div>
+</div>
+<hr>

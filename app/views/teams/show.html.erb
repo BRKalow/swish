@@ -1,14 +1,30 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @team.name %>
-</p>
-
-<p>
-  <strong>Picture:</strong>
-  <%= @team.picture %>
-</p>
-
-<%= link_to 'Edit', edit_team_path(@team) %> |
-<%= link_to 'Back', teams_path %>
+<div class="row">
+  <div class="col-sm-2 col-lg-1">
+    <%= image_tag(@team.picture_url(:medium), :class => "user-avatar", :size => 80) %>
+  </div>
+  <div class="col-sm-10 col-lg-11">
+    <h2 class="username"><%= @team.name %><small class="pull-right"><%= glyph "user" %> <%= @team.members.count %></small></h2>
+    <ul class="list-inline user-info">
+      <% if !@team.location.empty? %><li><%= glyph "map-marker" %> <%= @team.location %></li><% end %>
+      <% if !@team.website.empty? %><li><%= glyph "link" %> <%= @team.website %></li><% end %>
+      <% if current_user == @team.owner %>
+      <li class="pull-right">
+        <div class="dropdown pull-right">
+          <a class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+            <%= glyph "cog" %>
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+            <li role="presentation"><%= link_to glyph("send") + " Invite Teammate", "#", :onclick => "$('#newJoining').modal('toggle');" %></li>
+            <li role="presentation"><%= link_to glyph("pencil") + " Edit", edit_team_path(@team) %></li>
+            <li role="presentation"><%= link_to glyph("remove-sign") + " Delete (permanent)", team_path(@team), :method => :delete %></li>
+          </ul>
+        </div>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+<hr>
+<%= render @team.snippets %>
+<%= render 'joinings/form' %>
