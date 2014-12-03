@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :snippets
+  has_many :collections
   has_many :comments
   has_many :favorite_snippets
   has_many :favorites, through: :favorite_snippets, source: :snippet

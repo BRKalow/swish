@@ -1,1 +1,15 @@
-<%= user.username %>
+<div class="row">
+  <div class="col-sm-2 col-lg-1">
+    <%= link_to image_tag(avatar_url(user, 80), :class => "user-avatar", :size => 80), user_path(user) %>
+  </div>
+  <div class="col-sm-10 col-lg-11">
+    <h2 class="username"><%= link_to user.username, user_path(user) %></h2>
+    <ul class="list-inline user-info">
+      <li><%= glyph "file" %> <%= pluralize user.snippets.count, "snippet" %></li>
+      <li><%= glyph "heart" %> <%= pluralize user.favorites.count, "favorite" %></li>
+      <li><%= glyph "comment" %> <%= pluralize user.comments.count, "comment" %></li>
+      <li><%= glyph "folder-open" %> <%= pluralize user.collections.count, "collection" %></li>
+    </ul>
+  </div>
+</div>
+<hr>
