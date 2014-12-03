@@ -1,2 +1,3 @@
-<%= render @users %>
+<h2>Players</h2>
+<%= render @users || "No players...yet." %>
 <%= will_paginate @users, :page_links => false, renderer: BootstrapPagination::Rails %>
