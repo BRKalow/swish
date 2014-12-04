@@ -37,11 +37,12 @@ class FavoriteSnippetsController < ApplicationController
   end
 
   private
-    def set_favorite_snippet
-      @favorite_snippet = FavoriteSnippet.find(params[:id])
-    end
 
-    def favorite_snippet_params
-      params.require(:favorite_snippet).permit(:user_id, :snippet_id)
-    end
+  def set_favorite_snippet
+    @favorite_snippet = FavoriteSnippet.find(params[:id])
+  end
+
+  def favorite_snippet_params
+    params.require(:favorite_snippet).permit(:user_id, :snippet_id)
+  end
 end

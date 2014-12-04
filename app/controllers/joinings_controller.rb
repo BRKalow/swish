@@ -7,7 +7,7 @@ class JoiningsController < ApplicationController
       flash[:success] = "You have joined #{@joining.team.name}!"
       redirect_to team_path @joining.team
     else
-      flash[:error] = "This invitation was not mean for you."
+      flash[:error] = 'This invitation was not mean for you.'
       redirect_to :back
     end
   end
@@ -15,10 +15,10 @@ class JoiningsController < ApplicationController
   def destroy
     if current_user == @joining.user
       @joining.delete
-      flash[:success] = "You have declined the invitation."
+      flash[:success] = 'You have declined the invitation.'
       redirect_to :back
     else
-      flash[:error] = "This invitation was not mean for you."
+      flash[:error] = 'This invitation was not mean for you.'
       redirect_to :back
     end
   end

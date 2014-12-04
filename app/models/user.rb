@@ -16,12 +16,12 @@ class User < ActiveRecord::Base
   before_create :permalink_name
 
   def to_param
-    self.permalink
+    permalink
   end
 
   private
 
   def permalink_name
-    self.permalink = self.username.parameterize
+    self.permalink = username.parameterize
   end
 end

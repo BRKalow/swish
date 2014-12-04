@@ -9,7 +9,7 @@ class Comment < ActiveRecord::Base
   private
 
   def increment_snippet!
-    self.snippet.num_comments += 1
-    self.snippet.save!
+    snippet.num_comments += 1
+    snippet.save!
   end
 end

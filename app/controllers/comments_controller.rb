@@ -23,7 +23,7 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     @comment.save
-    flash[:success] = "Comment posted."
+    flash[:success] = 'Comment posted.'
     redirect_to snippet_path(@comment.snippet)
   end
 
@@ -38,11 +38,12 @@ class CommentsController < ApplicationController
   end
 
   private
-    def set_comment
-      @comment = Comment.find(params[:id])
-    end
 
-    def comment_params
-      params.require(:comment).permit(:user_id, :snippet_id, :body)
-    end
+  def set_comment
+    @comment = Comment.find(params[:id])
+  end
+
+  def comment_params
+    params.require(:comment).permit(:user_id, :snippet_id, :body)
+  end
 end

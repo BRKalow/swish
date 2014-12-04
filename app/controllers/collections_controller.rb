@@ -37,11 +37,12 @@ class CollectionsController < ApplicationController
   end
 
   private
-    def set_collection
-      @collection = Collection.find(params[:id])
-    end
 
-    def collection_params
-      params.require(:collection).permit(:name, :user_id, :num_snippets, :num_likes)
-    end
+  def set_collection
+    @collection = Collection.find(params[:id])
+  end
+
+  def collection_params
+    params.require(:collection).permit(:name, :user_id, :num_snippets, :num_likes)
+  end
 end
