@@ -5,11 +5,11 @@
         <h3>
           <%= link_to snippet.title, snippet_path(snippet) %>
           <ul class="small pull-right list-inline">
-            <li><%= glyph("globe") + " " + snippet.language %></li>
-            <li><%= glyph "time" %> <%= time_ago_in_words(snippet.created_at) %> ago</li>
-            <li><%= glyph "eye-open" %> <%= snippet.num_views %></li>
-            <li><%= glyph "heart" %> <%= snippet.num_favorites %></li>
-            <li><%= glyph "comment" %> <%= snippet.num_comments %></li>
+            <li data-toggle="tooltip" data-placement="top" title="Language"><%= glyph("globe") + " " + snippet.language %></li>
+            <li data-toggle="tooltip" data-placement="top" title="Created"><%= glyph "time" %> <%= time_ago_in_words(snippet.created_at) %> ago</li>
+            <li data-toggle="tooltip" data-placement="top" title="Views"><%= glyph "eye-open" %> <%= snippet.num_views %></li>
+            <li data-toggle="tooltip" data-placement="top" title="Favorites"><%= glyph "heart" %> <%= snippet.num_favorites %></li>
+            <li data-toggle="tooltip" data-placement="top" title="Comments" ><%= glyph "comment" %> <%= snippet.num_comments %></li>
           </ul>
         </h3>
         <p class="snippet-body">
