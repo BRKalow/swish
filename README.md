@@ -1,28 +1,43 @@
-== README
+Swish
+=====
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Swish is a code snippet sharing application. It was inspired by the concept of [Dribbble](https://dribbble.com), with the focus on developers instead of designers. Swish is also my final project for the INET 3350 (Ruby/Rails) class at the University of Minnesota taught by John Norman. This was a purely educational project and has no real intended longevity, or promises of quality.
 
-Things you may want to cover:
+Technologies
+------------
 
-* Ruby version
+Swish uses Ruby on Rails 4.2, with Postgres configured as its defaulted database driver. A collection of gems are also used in the project, which can be founded listed in the Gemfile.
 
-* System dependencies
+Local Installation
+------------
 
-* Configuration
+To install swish, clone the repository:
 
-* Database creation
+```
+git glone git@github.com:BRKalow/swish.git && cd swish
+```
 
-* Database initialization
+Then run bundle install:
 
-* How to run the test suite
+```
+bundle install
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+Setup the database:
 
-* Deployment instructions
+```
+rake db:create && rake db:migrate
+```
 
-* ...
+Finally run the development server:
 
+```
+bundle exec rails s
+```
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Navigating to `localhost:3000` should open the application.
+
+Deployment With Heroku
+----------------------
+
+Coming soon.
