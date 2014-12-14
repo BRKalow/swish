@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141203190509) do
+ActiveRecord::Schema.define(version: 20141210201254) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,17 +20,12 @@ ActiveRecord::Schema.define(version: 20141203190509) do
     t.string   "name"
     t.integer  "user_id"
     t.integer  "num_snippets"
-    t.integer  "num_likes"
+    t.integer  "num_favorites"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "collections", ["user_id"], name: "index_collections_on_user_id", using: :btree
-
-  create_table "collections_snippets", force: true do |t|
-    t.integer "snippet_id"
-    t.integer "collection_id"
-  end
 
   create_table "comments", force: true do |t|
     t.integer  "user_id"
@@ -79,6 +74,16 @@ ActiveRecord::Schema.define(version: 20141203190509) do
 
   add_index "snippets", ["team_id"], name: "index_snippets_on_team_id", using: :btree
   add_index "snippets", ["user_id"], name: "index_snippets_on_user_id", using: :btree
+
+  create_table "storings", force: true do |t|
+    t.integer  "snippet_id"
+    t.integer  "collection_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "storings", ["collection_id"], name: "index_storings_on_collection_id", using: :btree
+  add_index "storings", ["snippet_id"], name: "index_storings_on_snippet_id", using: :btree
 
   create_table "taggings", force: true do |t|
     t.integer  "tag_id"

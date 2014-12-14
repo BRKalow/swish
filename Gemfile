@@ -30,6 +30,7 @@ gem 'devise', '~> 3.4.1'
 
 gem 'bootstrap-sass'
 gem 'bootstrap-sass-extras'
+gem 'twitter-bootstrap-rails', :git => 'https://github.com/seyhunak/twitter-bootstrap-rails.git', :branch => 'master'
 gem 'autoprefixer-rails'
 gem 'bootswatch-rails'
 gem 'ace-rails-ap'
