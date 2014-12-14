@@ -13,10 +13,20 @@
   </div>
 </div>
 <div class="content">
-  <h3>Latest Snippets</h3><hr>
-  <%= render @user.snippets.limit(5) %>
-  <h3>Latest Comments</h3><hr>
-  <%= render @user.comments.limit(5) %>
-  <h3>Latest Collections</h3><hr>
-  <%= render @user.collections.limit(5) %>
+  <div role="tabpanel">
+    <ul class="nav nav-tabs" role="tablist">
+      <li role="presentation" class="active"><a href="#snippets" aria-controls="snippets" role="tab" data-toggle="tab">Snippets</a></li>
+      <li role="presentation"><a href="#collections" aria-controls="collections" role="tab" data-toggle="tab">Collections</a></li>
+    </ul>
+    <div class="tab-content">
+      <div role="tabpanel" class="tab-pane content active" id="snippets">
+      <%= render @snippets %>
+      <%= will_paginate @snippets, param_name: 's_page', page_links: false, renderer: BootstrapPagination::Rails %>
+      </div>
+      <div role="tabpanel" class="tab-pane content" id="collections">
+        <%= render @collections %>
+        <%= will_paginate @collections, param_name: 'c_page', page_links: false, renderer: BootstrapPagination::Rails %>
+      </div>
+    </div>
+  </div>
 </div>
