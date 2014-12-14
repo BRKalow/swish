@@ -19,6 +19,10 @@ class User < ActiveRecord::Base
     permalink
   end
 
+  def available_collections(snippet)
+    collections.where.not(id: Storing.select(:collection_id).where(snippet_id: snippet.id))
+  end
+
   private
 
   def permalink_name

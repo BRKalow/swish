@@ -9,10 +9,13 @@ Rails.application.routes.draw do
   resources :teams do
     put :joining, on: :member
   end
-  resources :collections
+  resources :collections do
+    put :favorite, on: :member
+  end
   resources :comments
   resources :snippets do
     put :favorite, on: :member
+    put :collect, on: :member
   end
 
   get 'users', to: 'users#index'

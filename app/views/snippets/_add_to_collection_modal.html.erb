@@ -1,0 +1,23 @@
+<% if user_signed_in? %>
+<div class="modal fade" id="collectSnippet" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Add Snippet to Collection</h4>
+      </div>
+      <div class="modal-body" id="add-to-collection">
+        <div class="form-group">
+          <input type="text" onkeyup="filter(this)" class="form-control" placeholder="Filter Collections">
+        </div>
+        <ul id="user-collections" class="list-group">
+          <%= render partial: 'collections/search_collection', collection: current_user.available_collections(@snippet), as: :collection %>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>

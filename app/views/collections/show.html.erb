@@ -1,24 +1,27 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @collection.name %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @collection.user %>
-</p>
-
-<p>
-  <strong>Num snippets:</strong>
-  <%= @collection.num_snippets %>
-</p>
-
-<p>
-  <strong>Num likes:</strong>
-  <%= @collection.num_likes %>
-</p>
-
-<%= link_to 'Edit', edit_collection_path(@collection) %> |
-<%= link_to 'Back', collections_path %>
+<div class="row">
+  <div class="col-sm-12">
+    <h3 class="username">
+      <%= @collection.name %>
+    </h3>
+    <ul class="list-inline">
+      <li><%= glyph "user" %> <%= @collection.user.username %></li>
+      <li><%= glyph "file" %> <%= pluralize @collection.num_snippets, "snippet" %></li>
+      <% if current_user == @collection.user %>
+          <li class="pull-right">
+            <div class="dropdown pull-right">
+              <a class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                <%= glyph "cog" %>
+                <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                <li role="presentation"><%= link_to glyph("pencil") + " Edit", edit_collection_path(@collection) %></li>
+                <li role="presentation"><%= link_to glyph("remove-sign") + " Delete (permanent)", collection_path(@collection), :data => { :confirm => 'Are you sure you want to delete this collection? Cannot be undone!' }, :method => :delete %></li>
+              </ul>
+            </div>
+          </li>
+        <% end %>
+    </ul>
+  </div>
+</div>
+<hr>
+<%= render @collection.snippets %>

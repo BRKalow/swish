@@ -1,10 +1,11 @@
 class CollectionsController < ApplicationController
   before_action :set_collection, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!, only: [:new]
 
   respond_to :html
 
   def index
-    @collections = Collection.all
+    @collections = Collection.paginate(page: params[:page], per_page: 10)
     respond_with(@collections)
   end
 
@@ -14,7 +15,10 @@ class CollectionsController < ApplicationController
 
   def new
     @collection = Collection.new
-    respond_with(@collection)
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def edit
@@ -22,8 +26,18 @@ class CollectionsController < ApplicationController
 
   def create
     @collection = Collection.new(collection_params)
-    @collection.save
-    respond_with(@collection)
+    if @collection.save
+      respond_to do |format|
+        format.html do
+          redirect_to @collection, notice: 'Collection created.'
+        end
+        format.js do
+          @collections = current_user.collections
+        end
+      end
+    else
+      render :new
+    end
   end
 
   def update
@@ -43,6 +57,7 @@ class CollectionsController < ApplicationController
   end
 
   def collection_params
-    params.require(:collection).permit(:name, :user_id, :num_snippets, :num_likes)
+    params.require(:collection).permit(:name, :user_id, :num_snippets,
+                                       :num_favorites, :tag_list)
   end
 end

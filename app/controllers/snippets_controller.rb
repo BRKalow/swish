@@ -1,5 +1,6 @@
 class SnippetsController < ApplicationController
-  before_action :set_snippet, only: [:show, :edit, :update, :destroy, :favorite]
+  before_action :set_snippet, only: [:show, :edit, :update, :destroy, :favorite,
+                                     :collect]
   before_action :update_views!, only: [:show]
   before_filter :authenticate_user!, only: [:mine, :favorites, :new]
 
@@ -22,6 +23,8 @@ class SnippetsController < ApplicationController
 
   def show
     @comment = Comment.new
+    @collection = Collection.new
+
     respond_with(@snippet)
   end
 
@@ -56,6 +59,21 @@ class SnippetsController < ApplicationController
       else
         current_user.favorites << @snippet
         redirect_to :back
+      end
+    else
+      flash[:error] = 'You need to be signed in to do this.'
+      redirect_to :back
+    end
+  end
+
+  def collect
+    if user_signed_in?
+      collection = Collection.find(params[:collection])
+      if !current_user.collections.include? collection
+        flash[:error] = 'You can\'t add snippets to collections that you didn\'t create.'
+      end
+      if !collection.snippets.include? @snippet
+        create_storing collection
       end
     else
       flash[:error] = 'You need to be signed in to do this.'
@@ -99,6 +117,20 @@ class SnippetsController < ApplicationController
     @snippet.num_favorites -= 1
     @snippet.save!
     redirect_to :back
+  end
+
+  def create_storing(collection)
+    @storing = Storing.new
+    @storing.snippet = @snippet
+    @storing.collection = collection
+
+    if @storing.save
+      flash[:success] = 'Snippet added to collection successfully.'
+      redirect_to snippet_path(@snippet)
+    else
+      flash[:error] = 'The snippet could not be added to the collection.'
+      redirect_to :back
+    end
   end
 
   def snippet_params

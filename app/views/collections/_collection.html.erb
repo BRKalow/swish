@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="col-sm-12">
+    <h3 class="username">
+      <%= link_to collection.name, collection_path(collection) %>
+      <ul class="list-inline small pull-right">
+        <li data-toggle="tooltip" data-placement="top" title="Creator"><%= glyph "user" %> <%= collection.user.username %></li>
+        <li data-toggle="tooltip" data-placement="top" title="Snippets"><%= glyph "file" %> <%= collection.num_snippets %></li>
+      </ul>
+    </h3>
+  </div>
+</div>
+<hr>
