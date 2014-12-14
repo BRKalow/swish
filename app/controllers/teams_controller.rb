@@ -1,5 +1,6 @@
 class TeamsController < ApplicationController
   before_action :set_team, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!, only: [:new]
 
   respond_to :html
 

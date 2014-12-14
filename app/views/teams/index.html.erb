@@ -1,3 +1,3 @@
-<h2>Teams <small class="pull-right"><%= link_to "Create Team", new_team_path %></small></h2>
+<h2>Teams <% if user_signed_in? %><small class="pull-right"><%= link_to "Create Team", new_team_path %></small><% end %></h2>
 <%= render @teams || "No teams...yet." %>
 <%= will_paginate @teams, :page_links => false, renderer: BootstrapPagination::Rails %>

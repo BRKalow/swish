@@ -1,10 +1,12 @@
 <% content_for :content do %>
-    <ul class="nav nav-tabs">
-        <%= nav_link "All Snippets", snippets_path %>
-        <%= nav_link "New Snippet", new_snippet_path %>
-        <%= user_snippets_link %>
-        <%= user_favorites_link %>
-    </ul>
+    <% if user_signed_in? %>
+      <ul class="nav nav-tabs">
+          <%= nav_link "All Snippets", snippets_path %>
+          <%= nav_link "New Snippet", new_snippet_path %>
+          <%= user_snippets_link %>
+          <%= user_favorites_link %>
+      </ul>
+    <% end %>
     <div class="content">
       <%= yield %>
     </div>
