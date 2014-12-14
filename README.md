@@ -6,7 +6,7 @@ Swish is a code snippet sharing application. It was inspired by the concept of [
 Technologies
 ------------
 
-Swish uses Ruby on Rails 4.2, with Postgres configured as its defaulted database driver. A collection of gems are also used in the project, which can be founded listed in the Gemfile.
+Swish uses Ruby on Rails 4.1, with Postgres configured as its defaulted database driver. A collection of gems are also used in the project, which can be founded listed in the Gemfile.
 
 Local Installation
 ------------
