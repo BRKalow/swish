@@ -1,33 +1,11 @@
-<%= form_for(@collection) do |f| %>
-  <% if @collection.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@collection.errors.count, "error") %> prohibited this collection from being saved:</h2>
-
-      <ul>
-      <% @collection.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.text_field :user_id %>
-  </div>
-  <div class="field">
-    <%= f.label :num_snippets %><br>
-    <%= f.number_field :num_snippets %>
-  </div>
-  <div class="field">
-    <%= f.label :num_likes %><br>
-    <%= f.number_field :num_likes %>
+<%= form_for(@collection, remote: :true) do |f| %>
+  <h4>Create Collection</h4>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <div class="form-group">
+    <%= f.label :name, class: 'sr-only' %>
+    <%= f.text_field :name, class: 'form-control', placeholder: 'Collection Name' %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit nil, class: 'btn btn-primary' %>
   </div>
 <% end %>

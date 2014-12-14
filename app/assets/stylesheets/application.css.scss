@@ -31,4 +31,11 @@ a:hover { background: none; }
 a.nav-logout:visited { color: white; }
 pre { border-radius: 0px; border: none; }
 .content { margin-top: 20px; }
+.field_with_errors {
+  display: block;
+  border: none;
+  background: none;
+  padding: 0px;
+  @extend .has-error;
+ }
 @import "bootswatch/flatly/bootswatch";

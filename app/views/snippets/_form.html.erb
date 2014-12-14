@@ -4,25 +4,16 @@
     <%= form_for(@snippet, :html => {class: ""}) do |f| %>
       <%= f.hidden_field :body %>
       <%= f.hidden_field :user_id, value: current_user.id %>
-      <% if @snippet.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@snippet.errors.count, "error") %> prohibited this snippet from being saved:</h2>
-
-          <ul>
-          <% @snippet.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-          </ul>
-        </div>
-      <% end %>
       <div class="row">
         <div class="form-group col-lg-6">
           <%= f.label :title, class: "sr-only" %>
           <%= f.text_field :title, class: "form-control col-lg-6", placeholder: "Snippet Title" %>
+          <%= f.error_span :title %>
         </div>
         <div class="form-group col-lg-2">
           <%= f.label :language, class: "sr-only" %>
           <%= f.text_field :language, class: "form-control col-lg-2", placeholder: "Language" %>
+          <%= f.error_span :language %>
         </div>
         <div class="form-group col-lg-4">
           <%= f.label :tag_list, class: "sr-only" %>
@@ -31,6 +22,7 @@
       </div>
       <div class="field">
         <div id="editor" style="width:100%;height:300px;"><%= @snippet.body %></div>
+        <%= f.error_span :body %>
       </div>
       <div class="actions">
         <div class="row">
