@@ -42,6 +42,7 @@ gem 'acts-as-taggable-on', '~> 3.4'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'gon'
+gem 'rails_12factor', group: :production
 
 gem 'rails-erd',     group: :development
 
