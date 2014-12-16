@@ -26,7 +26,7 @@ a:hover { background: none; }
 .nav-user-text { float: left; }
 .nav-avatar { margin-right: 5px; float: left; width: 40px; }
 .nav-avatar-image { height: 40px; width: 40px; display: inline-block; border-radius: 3px; }
-.nav-username { font-size: 16px; display: block; color: white; font-weight: 900;}
+.nav-username { font-size: 16px; display: block; color: white; font-weight: 900; cursor: pointer; }
 .nav-logout { line-height: 16px; color: white; }
 a.nav-logout:visited { color: white; }
 pre { border-radius: 0px; border: none; }

@@ -1,5 +1,5 @@
 <%= form_for(@collection, remote: :true) do |f| %>
-  <h4>Create Collection</h4>
+  <h2>Create Collection</h2>
   <%= f.hidden_field :user_id, value: current_user.id %>
   <div class="form-group">
     <%= f.label :name, class: 'sr-only' %>

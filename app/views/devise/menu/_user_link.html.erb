@@ -6,9 +6,14 @@
       </a>
     </div>
     <div class="nav-user-text">
-      <a href="<%= user_path(current_user) %>">
-        <span class="nav-username"><%= current_user.username %></span>
-      </a>
+      <div class="dropdown">
+        <span class="nav-username" id="nav-username" data-toggle="dropdown" aria-expanded="false" aria-haspopup="true"><%= current_user.username %> <span class="caret"></span>
+        </span>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="nav-username">
+          <li><%= link_to glyph('user') + ' Profile', user_path(current_user) %></li>
+          <li><%= link_to glyph('cog') + ' Settings', edit_user_registration_path %></li>
+        </ul>
+      </div>
       <%= link_to('Logout', destroy_user_session_path, :method => :delete, :class => 'nav-logout') %>
     </div>
     <div class="clearfix"></div>
