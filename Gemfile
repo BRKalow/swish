@@ -43,6 +43,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'gon'
 gem 'rails_12factor', group: :production
+gem 'fog', group: :production
 
 gem 'rails-erd',     group: :development
 

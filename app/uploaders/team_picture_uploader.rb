@@ -3,7 +3,9 @@
 class TeamPictureUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
-  storage :file
+  def cache_dir
+    "#{Rails.root}/tmp/uploads"
+  end
 
   def store_dir
     "uploads/#{model.class.to_s.underscore}_#{mounted_as}"
