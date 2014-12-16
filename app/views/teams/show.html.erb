@@ -6,7 +6,7 @@
     <h2 class="username"><%= @team.name %><small class="pull-right" data-toggle="tooltip" data-placement="top" title="Members"><%= glyph "user" %> <%= @team.members.count %></small></h2>
     <ul class="list-inline user-info">
       <% if !@team.location.empty? %><li><%= glyph "map-marker" %> <%= @team.location %></li><% end %>
-      <% if !@team.website.empty? %><li><%= glyph "link" %> <%= @team.website %></li><% end %>
+      <% if !@team.website.empty? %><li><%= glyph "link" %> <%= link_to @team.website, @team.website %></li><% end %>
       <% if current_user == @team.owner %>
       <li class="pull-right">
         <div class="dropdown pull-right">
