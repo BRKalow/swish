@@ -16,6 +16,15 @@ languages = new Bloodhound
 
 languages.initialize()
 
+@removeCommentWhitespace = (elements) ->
+  if elements.length
+    elements.each ->
+      $(this).html($.trim($(this).text()))
+      return
+
+removeCommentWhitespace($('.c'))
+removeCommentWhitespace($('.c1'))
+
 if $('#editor').length
   editor = ace.edit("editor")
   editor.setTheme("ace/theme/twilight")
