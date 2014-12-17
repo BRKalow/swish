@@ -10,6 +10,5 @@ CarrierWave.configure do |config|
     config.storage = :fog
   else
     config.storage = :file
-    config.root = "#{Rails.root}/tmp"
   end
 end
