@@ -37,7 +37,7 @@ bundle exec rails s
 
 Navigating to `localhost:3000` should open the application.
 
-Deployment With Heroku
+Heroku Deployment Link
 ----------------------
 
-Coming soon.
+Check it out [here](http://swish.brycekalow.name).
