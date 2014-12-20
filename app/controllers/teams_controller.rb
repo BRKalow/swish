@@ -1,6 +1,6 @@
 class TeamsController < ApplicationController
   before_action :set_team, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_user!, only: [:new]
+  before_filter :authenticate_user!, only: [:new, :edit]
 
   respond_to :html
 
@@ -23,6 +23,10 @@ class TeamsController < ApplicationController
   end
 
   def edit
+    if current_user != @team.owner
+      flash[:error] = 'You can\'t edit a team that isn\'t yours!'
+      redirect_to @team
+    end
   end
 
   def create
