@@ -2,7 +2,7 @@ class SnippetsController < ApplicationController
   before_action :set_snippet, only: [:show, :edit, :update, :destroy, :favorite,
                                      :collect]
   before_action :update_views!, only: [:show]
-  before_filter :authenticate_user!, only: [:mine, :favorites, :new]
+  before_filter :authenticate_user!, only: [:mine, :favorites, :new, :edit]
 
   respond_to :html
 
@@ -34,6 +34,10 @@ class SnippetsController < ApplicationController
   end
 
   def edit
+    if current_user != @snippet.user
+      flash[:error] = 'You can\'t edit a snippet that you didn\'t create!'
+      redirect_to @snippet
+    end
   end
 
   def create
